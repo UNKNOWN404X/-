@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>JANNA — The World I Made For You | جنّا.. دي حاجات كتير نفسي تعرفيها</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20100%20100><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+
+  <!-- Google Fonts: Alexandria & Cairo & Cinzel for Luxury Typography & Marhey for Brotherly Slang -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Cinzel:wght@600;700;900&family=Marhey:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="cinema-body is-locked">
+
+  <!-- Cinematic Film Grain Overlay -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Ambient Cinematic Glow Orbs -->
+  <div class="ambient-glow orb-crimson" aria-hidden="true"></div>
+  <div class="ambient-glow orb-pink" aria-hidden="true"></div>
+
+  <!-- Background Canvas for Particles, Starlight & Floating Petals -->
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+  <!-- Interactive Glass Shatter Canvas Overlay for Intro Climax -->
+  <canvas id="shatterCanvas" aria-hidden="true"></canvas>
+
+  <!-- Dedicated Plum Blossom Rain Canvas for Intro & Atmosphere -->
+  <canvas id="plumRainCanvas" aria-hidden="true"></canvas>
+
+  <!-- ===================================================================
+       SHELBY (THE LIVING ADORABLE WHITE CAT) — WITH STEPPING PAWS
+       =================================================================== -->
+  <div class="shelby-roamer shelby-mode-idle" id="shelbyRoamer" title="اضغطي على شلبي وشوفي هتقولك إيه 🐾">
+    
+    <!-- Speech Cloud Bubble (Guaranteed NEVER mirrored / always readable) -->
+    <div class="shelby-speech-cloud" id="roamerBubble">
+      <div class="cloud-text" id="roamerText">مياو يا شني! أنا شلبي الملكة البيضاء 👑🐾</div>
+      <div class="cloud-tail"></div>
+    </div>
+
+    <!-- Cute Fluffy White Cat Visual (Only this flips direction, not the bubble) -->
+    <div class="shelby-cat-art-wrap" id="shelbyCatArt">
+      <svg viewBox="0 0 170 170" class="cat-cute-svg" id="shelbySvg">
+        <defs>
+          <radialGradient id="cuteWhiteFur" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="70%" stop-color="#f5f5fa"/>
+            <stop offset="100%" stop-color="#e0e0ea"/>
+          </radialGradient>
+          <filter id="cuteFurGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(255, 117, 151, 0.35)"/>
+          </filter>
+        </defs>
+
+        <!-- Dynamic Ground Shadow -->
+        <ellipse cx="85" cy="148" rx="55" ry="8" fill="rgba(0, 0, 0, 0.5)" class="cute-cat-shadow" id="catShadow"/>
+
+        <!-- Animated Tail -->
+        <path d="M42 118 Q12 108 24 64 Q28 48 38 58" fill="none" stroke="url(#cuteWhiteFur)" stroke-width="14" stroke-linecap="round" class="cute-cat-tail" id="roamerTail"/>
+        <path d="M42 118 Q12 108 24 64 Q28 48 38 58" fill="none" stroke="rgba(255, 117, 151, 0.2)" stroke-width="4" stroke-linecap="round"/>
+
+        <!-- Back Left Paw (Steps when walking, still when sitting) -->
+        <g class="paw-group paw-back-left" id="pawBL">
+          <ellipse cx="56" cy="138" rx="10" ry="8" fill="#ffffff" stroke="#e0e0ea" stroke-width="1"/>
+          <path d="M52 140 h8" stroke="#ffccd7" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+
+        <!-- Fluffy Body Base -->
+        <ellipse cx="85" cy="108" rx="44" ry="34" fill="url(#cuteWhiteFur)" filter="url(#cuteFurGlow)" stroke="#f0eef5" stroke-width="1.5" class="cute-cat-body" id="catBodyEl"/>
+
+        <!-- Soft Chest Fluff -->
+        <path d="M72 95 Q85 116 98 95 Q85 103 72 95 Z" fill="#ffffff"/>
+
+        <!-- Head Group -->
+        <g class="cute-head-group" id="catHeadEl">
+          <circle cx="112" cy="74" r="28" fill="url(#cuteWhiteFur)" stroke="#eeebf5" stroke-width="1.5"/>
+
+          <!-- Pointy Cute Ears with Pink Inside -->
+          <polygon points="98,56 90,22 112,44" fill="#ffffff" stroke="#e8e5f0" stroke-width="1"/>
+          <polygon points="100,52 94,28 108,44" fill="#ffb8cc"/>
+          <polygon points="124,56 136,22 118,44" fill="#ffffff" stroke="#e8e5f0" stroke-width="1"/>
+          <polygon points="122,52 132,28 120,44" fill="#ffb8cc"/>
+
+          <!-- Pink Bell Collar -->
+          <path d="M94 95 Q114 104 130 93" stroke="#ff7597" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+          <circle cx="112" cy="100" r="4.5" fill="#ffd166" stroke="#ff7597" stroke-width="1.2"/>
+          <circle cx="112" cy="102" r="1" fill="#bd0f2d"/>
+
+          <!-- Big Expressive Amber-Green Cat Eyes -->
+          <ellipse cx="106" cy="70" rx="4.8" ry="6.6" fill="#2ecc71" class="cat-eye" id="catEyeL"/>
+          <ellipse cx="122" cy="70" rx="4.8" ry="6.6" fill="#2ecc71" class="cat-eye" id="catEyeR"/>
+          <ellipse cx="106" cy="70" rx="1.8" ry="5.2" fill="#14141a"/>
+          <ellipse cx="122" cy="70" rx="1.8" ry="5.2" fill="#14141a"/>
+          <circle cx="105" cy="68" r="1.6" fill="#ffffff"/>
+          <circle cx="121" cy="68" r="1.6" fill="#ffffff"/>
+
+          <!-- Pink Nose & Cute Mouth -->
+          <polygon points="114,79 111,76 117,76" fill="#ff7597"/>
+          <path d="M111 81 Q114 84 117 81" stroke="#ff7597" stroke-width="1.5" fill="none"/>
+
+          <!-- Whiskers -->
+          <line x1="90" y1="77" x2="68" y2="73" stroke="#d5d2e0" stroke-width="1.5"/>
+          <line x1="90" y1="81" x2="68" y2="84" stroke="#d5d2e0" stroke-width="1.5"/>
+          <line x1="128" y1="77" x2="150" y2="73" stroke="#d5d2e0" stroke-width="1.5"/>
+          <line x1="128" y1="81" x2="150" y2="84" stroke="#d5d2e0" stroke-width="1.5"/>
+        </g>
+
+        <!-- Stepping Front Left Paw -->
+        <g class="paw-group paw-front-left" id="pawFL">
+          <ellipse cx="78" cy="142" rx="9" ry="8" fill="#ffffff" stroke="#e8e5f0" stroke-width="1"/>
+          <path d="M74 144 h8" stroke="#ffccd7" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+
+        <!-- Stepping Front Right Paw -->
+        <g class="paw-group paw-front-right" id="pawFR">
+          <ellipse cx="106" cy="142" rx="9" ry="8" fill="#ffffff" stroke="#e8e5f0" stroke-width="1"/>
+          <path d="M102 144 h8" stroke="#ffccd7" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+
+      </svg>
+    </div>
+
+  </div>
+  <!-- Floating Audio Player Bar (Minimal & Luxury) -->
+  <div class="music-dock" id="musicDock">
+    <button class="music-btn" id="musicToggleBtn" title="تشغيل / إيقاف الموسيقى" aria-label="Music Toggle">
+      <div class="music-disc">
+        <span class="disc-core"></span>
+      </div>
+      <div class="music-info">
+        <span class="music-title">لحن خاص بـ جنّا 🎵</span>
+        <span class="music-sub">Janna's Soundtrack</span>
+      </div>
+      <div class="sound-waves" id="soundWaves">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </button>
+    <audio id="bgAudio" loop preload="auto">
+      <source src="music.mp3" type="audio/mp3">
+    </audio>
+  </div>
+
+  <!-- ===================================================================
+       01 — شاشة الدخول المطورة (PLUM BLOSSOM RAIN & NEON COSMOS)
+       =================================================================== -->
+  <section class="screen-opening" id="screenOpening">
+    <div class="opening-content">
+      
+      <!-- Central Blooming Plum Blossom SVG Animation -->
+      <div class="plum-blossom-container" id="plumBlossom">
+        <div class="blossom-glow"></div>
+        <svg viewBox="0 0 140 140" class="svg-plum-blossom">
+          <g class="petals-group">
+            <path class="petal petal-1" d="M70,70 C55,40 50,20 70,12 C90,20 85,40 70,70 Z" />
+            <path class="petal petal-2" d="M70,70 C98,52 118,50 125,70 C118,90 98,88 70,70 Z" />
+            <path class="petal petal-3" d="M70,70 C85,98 90,118 70,128 C50,118 55,98 70,70 Z" />
+            <path class="petal petal-4" d="M70,70 C42,88 22,90 15,70 C22,50 42,52 70,70 Z" />
+            <path class="petal petal-5" d="M70,70 C45,55 35,35 50,22 C65,22 68,45 70,70 Z" />
+          </g>
+          <circle cx="70" cy="70" r="10" fill="#e6193c" class="blossom-core" />
+          <circle cx="70" cy="70" r="5" fill="#ffd166" />
+          <circle cx="64" cy="65" r="1.5" fill="#fff" />
+          <circle cx="76" cy="65" r="1.5" fill="#fff" />
+          <circle cx="70" cy="76" r="1.5" fill="#fff" />
+        </svg>
+      </div>
+
+      <!-- Mysterious Sequential Narrative Lines (Teasing & Emotional) -->
+      <div class="opening-lines" id="openingLines">
+        <p class="op-line" id="opLine1">في حد مستنيكِ هنا...</p>
+        <p class="op-line op-sub" id="opLine2">بس مش أي حد.. حد شايفك بجد.</p>
+        <p class="op-line" id="opLine3">عارف إن 16 سنة عدوا في غمضة عين..</p>
+        <p class="op-line op-glow" id="opLine4">وشايف الطفلة اللي كبرت وعملت أحلى جلو أب في الدنيا ✨</p>
+        <p class="op-line" id="opLine5">أشطر لعيبة ببجي.. وأحن ممرضة.. وأغلى كتكوته في البيت.</p>
+        <p class="op-line op-pause" id="opLine6">أنا محضرلك عالم كامل معمول عشانك إنتي بس.</p>
+        <p class="op-line op-climax" id="opLine7">جاهزة تشوفي الحاجة دي يا شني؟</p>
+      </div>
+
+      <!-- Shimmering Gateway Button -->
+      <div class="opening-action" id="openingAction">
+        <button class="btn-enter" id="enterWorldBtn">
+          <span class="btn-text">ادخلي شوفي عالمك يا جنّا 🌸</span>
+          <span class="btn-glare"></span>
+          <span class="btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+        <span class="btn-hint">المسي الزرار.. وخلي السحر يبدأ ✨</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       MAIN STORY CONTAINER
+       =================================================================== -->
+  <main class="main-journey" id="mainJourney">
+
+    <!-- Top Floating Progress Bar -->
+    <div class="story-progress-bar" id="storyProgressBar"></div>
+
+    <!-- ===================================================================
+         02 — عالم جنّا (JANNA'S UNIVERSE)
+         =================================================================== -->
+    <section class="section sec-universe" id="secUniverse">
+      <div class="sec-container text-center">
+        
+        <div class="floating-ladybug-mini" aria-hidden="true" title="دعسوقة ميراكولوس">
+          <svg viewBox="0 0 100 100" class="svg-ladybug">
+            <ellipse cx="50" cy="55" rx="35" ry="38" fill="#e6193c" />
+            <path d="M50 17 L50 93" stroke="#050505" stroke-width="3" />
+            <circle cx="50" cy="22" r="14" fill="#121216" />
+            <circle cx="45" cy="18" r="2.5" fill="#ffffff" />
+            <circle cx="55" cy="18" r="2.5" fill="#ffffff" />
+            <circle cx="32" cy="45" r="7" fill="#050505" />
+            <circle cx="68" cy="45" r="7" fill="#050505" />
+            <circle cx="28" cy="68" r="6" fill="#050505" />
+            <circle cx="72" cy="68" r="6" fill="#050505" />
+            <circle cx="50" cy="58" r="6.5" fill="#050505" />
+            <path d="M44 14 Q35 2 28 8" stroke="#121216" stroke-width="3" fill="none" stroke-linecap="round" />
+            <path d="M56 14 Q65 2 72 8" stroke="#121216" stroke-width="3" fill="none" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <span class="cinematic-tag reveal-item">WORLD EXCLUSIVE • FOR JANNA</span>
+        
+        <h1 class="hero-name reveal-item">
+          <span class="eng-name">JANNA</span>
+          <span class="ar-alias">«شني» • كتكوته • سرنجة قلبي 🩺❤️</span>
+        </h1>
+
+        <!-- Date & Age Counter (16 Years) -->
+        <div class="date-counter-wrapper reveal-item">
+          <div class="base-dates-row">
+            <span class="badge-date" title="تاريخ الاحتفال الخاص">10 . 10 . 2011</span>
+            <span class="badge-sep">✦</span>
+            <span class="badge-date" title="الميلاد الرسمي">01 . 01 . 2011</span>
+          </div>
+
+          <div class="counter-box">
+            <span class="year-label">الرحلة بدأت من سنة 2011 والنهارده بنحتفل بـ:</span>
+            <div class="year-counter" id="yearCounter">2011</div>
+            <span class="year-target">وفضلتي تكبري وتحلوي لحد ما وصلتي لـ</span>
+          </div>
+
+          <div class="age-badge">
+            <span class="age-num" id="ageBadgeNum">16</span>
+            <span class="age-text">سنة رسمياً من الجمال والعظمة والدلع!</span>
+          </div>
+        </div>
+
+        <p class="hero-quote reveal-item">
+          "16 سنة من جنّا.. ومن طيبة قلبك وضحكتك اللي بتنور البيت كله.<br>
+          <span class="quote-sub">كنتي طفلة كيوت.. وكبرتي واحلوتي وعملتي أحلى Glow-up في التاريخ، ولسه هتحلوي وتوصلي لأبعد مما تتخيلي.</span>"
+        </p>
+
+        <div class="scroll-cue">
+          <div class="mouse-icon"></div>
+          <span>انزلي وشوفي الحكاية بتكمل إزاي</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         خريطة جنّا — الخط الزمني التفاعلي (2011 -> 2026)
+         =================================================================== -->
+    <section class="section sec-timeline" id="secTimeline">
+      <div class="sec-container text-center">
+        
+        <span class="sub-label reveal-item">رحلة الـ 16 سنة // خريطة جنّا</span>
+        <h2 class="title-glow reveal-item">محطات في حكاية أحلى بنت</h2>
+        <p class="desc-lead reveal-item">اضغطي على أي سنة وشوفي ذكريات وكلام طالع من قلبي عنك:</p>
+
+        <div class="timeline-stepper reveal-item" id="timelineStepper">
+          <div class="timeline-bar">
+            <div class="timeline-fill" id="timelineFill"></div>
+          </div>
+
+          <div class="timeline-nodes">
+            <button class="t-node is-active" data-year="2011" data-title="بداية النور" data-text="1/1/2011.. اليوم اللي الدنيا نورت فيه وبقى ليا أخت وقمر ينور البيت كله.">
+              <span class="t-year">2011</span>
+              <span class="t-dot"></span>
+            </button>
+            <button class="t-node" data-year="2015" data-title="الطفلة الكيوت" data-text="طفلة بريئة بتجري وتضحك بعيون بتلمع، بتتعلق بالورد والكارتون واللعب الشقي.">
+              <span class="t-year">2015</span>
+              <span class="t-dot"></span>
+            </button>
+            <button class="t-node" data-year="2019" data-title="عشق ميراكولوس وشلبي" data-text="حب الدعسوقة وميراكولوس، وبداية تربية شلبي البيضاء كأنها بنتك مش مجرد قطة.">
+              <span class="t-year">2019</span>
+              <span class="t-dot"></span>
+            </button>
+            <button class="t-node" data-year="2022" data-title="احترفت ببجي والشيف" data-text="بقتي أسطورة ببجي اللي بتشيل السكواد، وبدأتي تخترعي أكلات من تيك توك تبهرنا كلنا!">
+              <span class="t-year">2022</span>
+              <span class="t-dot"></span>
+            </button>
+            <button class="t-node" data-year="2026" data-title="16 سنة والعوض الكبير" data-text="تميتي 16 سنة رسمي.. أحلى جلو أب في الدنيا، ونيرس المستقبل اللي رافع راسي بيها قدام العالم!">
+              <span class="t-year">2026</span>
+              <span class="t-dot"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="timeline-display-card reveal-item" id="timelineDisplay">
+          <div class="td-header">
+            <span class="td-badge" id="tdYearBadge">2011</span>
+            <h3 class="td-title" id="tdTitle">بداية النور 🌸</h3>
+          </div>
+          <p class="td-text" id="tdText">
+            1/1/2011.. اليوم اللي الدنيا نورت فيه وبقى ليا أخت وقمر ينور البيت كله.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         03 — إنتي مش مجرد سنة أكبر (PASSIONS & IDENTITY)
+         =================================================================== -->
+    <section class="section sec-passions" id="secPassions">
+      <div class="sec-container">
+        
+        <div class="section-heading text-center reveal-item">
+          <span class="sub-label">03 // شخصيتك اللي مفيش زيها</span>
+          <h2 class="title-glow">إنتي مش مجرد سنة أكبر.. إنتي حكاية كاملة</h2>
+          <p class="desc-lead">هادية ولطيفة، وعصبية وحنينة في نفس الوقت.. من برة إندبندنت ومن جوة طفلة قلبها أبيض من الورد:</p>
+        </div>
+
+        <div class="passions-grid">
+          
+          <div class="passion-card card-miraculous reveal-item">
+            <div class="card-icon-wrap icon-ladybug">
+              <svg viewBox="0 0 100 100" class="passion-svg">
+                <circle cx="50" cy="50" r="42" fill="#bd0f2d" stroke="#e6193c" stroke-width="2"/>
+                <circle cx="50" cy="50" r="10" fill="#0d0d11"/>
+                <circle cx="30" cy="30" r="8" fill="#0d0d11"/>
+                <circle cx="70" cy="30" r="8" fill="#0d0d11"/>
+                <circle cx="28" cy="70" r="8" fill="#0d0d11"/>
+                <circle cx="72" cy="70" r="8" fill="#0d0d11"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="tag-accent">Miraculous Ladybug</span>
+              <h3>لسه بتحب الدعسوقة</h3>
+              <p>من برة عاملة فيها البنت الإندبندنت القوية اللي مبتتهزش، ومن جوة لسه نفس الطفلة الطيبة اللي بتعشق الدعسوقة وميراكولوس وبتدافع عن كل اللي بتحبهم.</p>
+            </div>
+          </div>
+
+          <div class="passion-card card-pubg reveal-item">
+            <div class="card-icon-wrap icon-pubg">
+              <svg viewBox="0 0 100 100" class="passion-svg">
+                <circle cx="50" cy="50" r="40" fill="#17171e" stroke="#ff2a51" stroke-width="2"/>
+                <path d="M25 45 Q50 20 75 45 L70 70 Q50 78 30 70 Z" fill="#242432"/>
+                <rect x="35" y="48" width="30" height="10" rx="3" fill="#ff7597"/>
+                <line x1="50" y1="20" x2="50" y2="80" stroke="#ff2a51" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <line x1="20" y1="50" x2="80" y2="50" stroke="#ff2a51" stroke-width="1.5" stroke-dasharray="4,4"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="tag-accent">PUBG Mobile Pro</span>
+              <h3>محترفة ببجي اللي بتجلّد</h3>
+              <p>مين يصدق إن الكتكوتة الهادية دي لما تمسك الموبايل بتتحول لوحش في ببجي بتمسح السكوادات وتجيب تشيكن دينر بروقان؟ عاش يا بطلة!</p>
+            </div>
+          </div>
+
+          <div class="passion-card card-roses reveal-item">
+            <div class="card-icon-wrap icon-roses">
+              <svg viewBox="0 0 100 100" class="passion-svg">
+                <circle cx="50" cy="45" r="28" fill="#e6193c" opacity="0.85"/>
+                <path d="M50 25 C60 25 65 35 55 45 C45 35 40 25 50 25 Z" fill="#ff7597"/>
+                <path d="M50 68 Q50 90 45 92" stroke="#2ecc71" stroke-width="4" fill="none"/>
+                <path d="M48 76 Q35 70 38 64 Q48 68 48 76 Z" fill="#2ecc71"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="tag-accent">Flowers & Aesthetics</span>
+              <h3>عشق الورد والرقة</h3>
+              <p>بتحب الورد جداً.. وأي بوكيه أو تفصيلة ورد بتخلي عينك تلمع، عشان إنتي أصلاً شبه الورد في هدوءك ورقتك حتى وإنتي قالباها عصبية 😂</p>
+            </div>
+          </div>
+
+          <div class="passion-card card-cooking reveal-item">
+            <div class="card-icon-wrap icon-chef">
+              <svg viewBox="0 0 100 100" class="passion-svg">
+                <path d="M30 65 L70 65 Q70 85 50 85 Q30 85 30 65 Z" fill="#ff7597"/>
+                <ellipse cx="50" cy="65" rx="20" ry="5" fill="#f8a5c2"/>
+                <path d="M42 55 Q45 45 40 35" stroke="#ff2a51" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M50 55 Q53 42 48 30" stroke="#ff7597" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M58 55 Q61 45 56 35" stroke="#ff2a51" stroke-width="3" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="tag-accent">Master Chef In The Making</span>
+              <h3>شيف العيلة اللي بتخترع</h3>
+              <p>لو شفتي أكلة شكلها عجبك على تيك توك أو في أي داهية.. غالبًا هتقومي تفتحي التلاجة وتجربي تعمليها.. وغالبًا والله العظيم بتطلع أحلى مما كنت متوقع بكتير! بس طبعاً مستحيل أقولك في وشك إنها حلوة.. دي مبادئ بين الإخوات مفيهاش تنازل 😂🍳</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         04 — في حاجة تانية فيكي (حلم التمريض الفاخر)
+         =================================================================== -->
+    <section class="section sec-nursing" id="secNursing">
+      <div class="sec-container">
+        <div class="nursing-layout">
+          <div class="nursing-text-box reveal-item">
+            <span class="sub-label">04 // حلمك اللي بيكبر جواكي</span>
+            <h2 class="title-glow">سألتك مرة: ليه تمريض؟</h2>
+            <div class="dialogue-bubble">
+              <p class="dialogue-quote">"قلتيلي: عادي... بحبها."</p>
+            </div>
+            
+            <div class="nursing-reflections">
+              <p class="n-item">يمكن عشان بتحبيها وخلاص..</p>
+              <p class="n-item">ويمكن عشان عايزة فلوس مادية حقيرة من ورا الشغلانة دي؟ 😂 (بهزر معاكي يا سرنجة قلبي بس ده حلالك).</p>
+              <p class="n-item">ويمكن لأن ربنا خلق في قلبك جرعة حنية وطيبة تداوي أوجاع أي حد يشوف وشك السمح.</p>
+            </div>
+
+            <div class="badge-coming-soon">
+              <div class="pulse-ring"></div>
+              <div class="pulse-dot"></div>
+              <span>NURSE JANNA — COMING SOON 🩺✨</span>
+            </div>
+
+            <div class="nursing-support-pledge">
+              <p>
+                وسواء وصلتي يا جنا أو لسه الطريق طويل.. هفضل وراكي، ضهر وسند، أدعمك وأشجعك وأفتخر بيكي قدام الدنيا كلها. إنتي عندي أعظم وأشطر كتكوته في العالم.
+              </p>
+            </div>
+          </div>
+
+          <div class="nursing-visual-box reveal-item">
+            <div class="silhouette-frame">
+              <div class="glow-backdrop"></div>
+              <svg viewBox="0 0 200 300" class="nurse-svg-art">
+                <defs>
+                  <linearGradient id="nurseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff7597"/>
+                    <stop offset="100%" stop-color="#bd0f2d"/>
+                  </linearGradient>
+                </defs>
+                <path d="M93 52 h14 v14 h-14 z" fill="#ffffff" opacity="0.9"/>
+                <path d="M86 59 h28 v0" stroke="#ffffff" stroke-width="4" opacity="0.9"/>
+                <path d="M100 45 v28" stroke="#ffffff" stroke-width="4" opacity="0.9"/>
+                <path d="M70 70 Q100 40 130 70 L125 78 Q100 65 75 78 Z" fill="url(#nurseGrad)"/>
+                <circle cx="100" cy="95" r="22" fill="#1b1b24"/>
+                <path d="M78 95 C78 75 122 75 122 95 C122 125 78 125 78 95 Z" fill="#242430" opacity="0.7"/>
+                <path d="M92 117 h16 v15 h-16 z" fill="#1b1b24"/>
+                <path d="M50 160 Q100 130 150 160 L145 270 Q100 280 55 270 Z" fill="url(#nurseGrad)" opacity="0.85"/>
+                <path d="M75 150 Q70 190 95 205 Q100 210 105 205 Q130 190 125 150" fill="none" stroke="#f8a5c2" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="100" cy="215" r="7" fill="#ffffff" stroke="#bd0f2d" stroke-width="2"/>
+              </svg>
+              <div class="nurse-caption">أشطر سرنجة وأحن نيرس في المجرة 🩺🌸</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         05 — خليني أقولك أنا شايفك إزاي بجد (SOUL CARDS)
+         =================================================================== -->
+    <section class="section sec-how-i-see" id="secHowISee">
+      <div class="sec-container text-center">
+        
+        <span class="sub-label reveal-item">05 // كلام من قاع القلب</span>
+        <h2 class="title-glow reveal-item">خليني أقولك أنا شايفك إزاي بجد</h2>
+
+        <div class="soul-cards-grid reveal-item">
+          <div class="soul-card highlight-card">
+            <span class="soul-icon">👑</span>
+            <p class="soul-text">
+              شايفك بنتي، وحبيبتي، وأمي، وأختي، وصاحبتي، وكل ما ليا في الدنيا دي كلها.
+            </p>
+          </div>
+
+          <div class="soul-card">
+            <span class="soul-icon">✨</span>
+            <p class="soul-text">
+              شايفك السبب اللي مخليني قادر أكمل، وأعافر، وأتعب، وأستحمل.. ولما أحس إني بيأس أفتكرك فـ أتشجع تاني وأقوم على رجلي.
+            </p>
+          </div>
+
+          <div class="soul-card highlight-card">
+            <span class="soul-icon">🤍</span>
+            <p class="soul-text">
+              شايفك حضني الدافي والمكان اللي بهربله من وجع الدنيا ودوشتها.. أماني، وأسراري، وآمن حد عليا في الكون.
+            </p>
+          </div>
+
+          <div class="soul-card">
+            <span class="soul-icon">🌸</span>
+            <p class="soul-text">
+              بحب فيكي طيبتك وهزارك.. نضجك وطفولتك اللي موجودين مع بعض إزاي في نفس البنت معرفش!
+            </p>
+          </div>
+
+          <div class="soul-card">
+            <span class="soul-icon">😂</span>
+            <p class="soul-text">
+              بحب أشوفك بتضحكي لأن ضحكتك دي بتفرحني من جوة.. المفروض ضحكتك دي تتصرف في الصيدليات كمضاد اكتئاب أصلاً!
+            </p>
+          </div>
+
+          <div class="soul-card">
+            <span class="soul-icon">🐣</span>
+            <p class="soul-text">
+              بحب مودك، وبخاف على زعلك بطريقة غبية.. وبحاول أتأقلم مع شخصياتك اللي بيطلعوا فجأة 50 شخصية في دقيقتين!
+            </p>
+          </div>
+        </div>
+
+        <div class="ultimate-statement reveal-item">
+          <p class="ust-pre">وفي الآخر يا شني..</p>
+          <h3 class="ust-main">«بحبك عشان إنتي تتحبي.. ونقطة ومن أول السطر.»</h3>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         06 — عهد أخ لأخته (لو طلبتي عيوني)
+         =================================================================== -->
+    <section class="section sec-promise" id="secPromise">
+      <div class="sec-container">
+        <div class="promise-card reveal-item">
+          <div class="promise-light-glow" aria-hidden="true"></div>
+          
+          <span class="sub-label">06 // عهد أخ لأخته</span>
+          <h2 class="title-glow">لو طلبتي عيوني..</h2>
+
+          <div class="promise-text">
+            <p class="p-line">أنا ساعات بهزر معاكي بغباء، وساعات نتنرفز ونتخانق لدرجة إنك تبقي مش طايقة تسمعي صوتي ولا تشوفي وشي..</p>
+            <p class="p-line">وساعات ببقى آخر شخص في الدنيا نفسك تتكلمي معاه وممكن تقفلي في وشي الباب وتزعقي..</p>
+            
+            <div class="promise-solid-rule"></div>
+
+            <p class="p-line p-bold">بس في حاجة واحدة عمري ما ههزر فيها، ومش هتتغير طول ما أنا عايش في الدنيا:</p>
+            
+            <div class="promise-highlight-box">
+              <p>
+                إني لو قدرت أعمل أي حاجة في الدنيا تخلي حياتك أريح أو ترسم فرحة حقيقية على وشك، هعملها من غير تردد.. مش عشان تشكريني، ومش عشان أحس إني كويس.. هعملها عشان إنتي أختي، وعشان وجودك في حياتي أغلى من أي حاجة تانية.
+              </p>
+            </div>
+
+            <p class="p-line p-extra">
+              لو الدنيا كلها وقفت ضدك، أنا الجيش اللي هيقف قدامها.. ولو كل الطرق قفلت، هتلاقي كتفي موجود تستندي عليه من غير ما تطلبي.
+            </p>
+          </div>
+
+          <div class="ladybug-walk-lane">
+            <div class="destination-light">
+              <span>النور دايمًا معاكي يا جنّا ✨</span>
+            </div>
+            <div class="walking-bug" id="walkingBug">
+              <svg viewBox="0 0 60 60" class="tiny-bug-svg">
+                <circle cx="30" cy="30" r="18" fill="#ff2a51"/>
+                <circle cx="30" cy="30" r="4" fill="#000"/>
+                <circle cx="22" cy="24" r="3" fill="#000"/>
+                <circle cx="38" cy="24" r="3" fill="#000"/>
+                <circle cx="30" cy="12" r="6" fill="#17171c"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         07 — شلبي.. الملكة الحقيقية للبيت 👑🐾 (THRONE PEDESTAL)
+         =================================================================== -->
+    <section class="section sec-shelbie" id="secShelbie">
+      <div class="sec-container text-center">
+        
+        <span class="sub-label reveal-item">07 // قسم الملكة المتوجة</span>
+        <h2 class="title-glow reveal-item">شــلــبــي.. الملكة الحقيقية للبيت 👑🐾</h2>
+        <p class="desc-lead reveal-item">
+          القطة البيضاء اللي جنّا بتعاملها كأنها بنتها مش مجرد قطة.. اضغطي عليها هنا أو في أي حتة في الشاشة وشوفي قصف الجبهات والدلع!
+        </p>
+
+        <div class="shelbie-pedestal-stage reveal-item" id="shelbiePedestal">
+          <div class="pedestal-halo"></div>
+          
+          <div class="pedestal-throne">
+            <span class="throne-label">عرش شلبي الملكي</span>
+            <!-- The Cushion Dock Area: Shelby runs on all fours and perches right here! -->
+            <div class="throne-cushion" id="throneCushion">
+              <div class="cushion-royal-mat"></div>
+              <span class="cushion-hint" id="cushionHint">شــلــبــي بتراقبك من فوق العرش 🐾</span>
+            </div>
+          </div>
+
+          <div class="shelby-dashboard">
+            <button class="btn-call-shelby" id="callShelbyBtn">
+              <span>ندهي على شلبي تجري هنا 🐈‍⬛💨</span>
+            </button>
+            <div class="shelby-stats">
+              <span>حركات وضحك مع شلبي: </span>
+              <strong id="shelbyGlobalClicks">0</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         رسائل سريعة من أخوكي (QUICK SIBLING LOVE NOTES)
+         =================================================================== -->
+    <section class="section sec-quick-notes" id="secQuickNotes">
+      <div class="sec-container text-center">
+        <span class="sub-label reveal-item">كروت الدلع السريع // ضغطة واحدة تروقك</span>
+        <h2 class="title-glow reveal-item">رسائل سريعة من أخوكي 💌</h2>
+        <p class="desc-lead reveal-item">اضغطي على أي كارت تطلعلك رسالة دلع أو هزار أو طبطبة فورية:</p>
+
+        <div class="quick-notes-grid reveal-item" id="quickNotesGrid">
+          <button class="note-box" data-idx="0">
+            <span class="n-emoji">🌸</span>
+            <span class="n-text">افتحي كارت الروقان</span>
+          </button>
+          <button class="note-box" data-idx="1">
+            <span class="n-emoji">🐣</span>
+            <span class="n-text">افتحي كارت الطبطبة</span>
+          </button>
+          <button class="note-box" data-idx="2">
+            <span class="n-emoji">😂</span>
+            <span class="n-text">افتحي كارت القصف الأخوي</span>
+          </button>
+          <button class="note-box" data-idx="3">
+            <span class="n-emoji">🩺</span>
+            <span class="n-text">افتحي كارت النيرس</span>
+          </button>
+          <button class="note-box" data-idx="4">
+            <span class="n-emoji">✨</span>
+            <span class="n-text">افتحي كارت الفخر</span>
+          </button>
+          <button class="note-box" data-idx="5">
+            <span class="n-emoji">💖</span>
+            <span class="n-text">افتحي كارت الأمان</span>
+          </button>
+        </div>
+
+        <div class="note-modal-display" id="noteModal">
+          <div class="note-bubble-card">
+            <div class="note-close-btn" id="closeNoteBtn">✕</div>
+            <div class="note-content-text" id="noteContentText">
+              اضغطي على أي كارت فوق عشان تشوفي كلام أخوكي ليكي ❤️
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         08 — لو في يوم الدنيا بقت تقيلة
+         =================================================================== -->
+    <section class="section sec-interactive-care" id="secCare">
+      <div class="sec-container">
+        <div class="section-heading text-center reveal-item">
+          <span class="sub-label">08 // صيدلية الطمأنينة</span>
+          <h2 class="title-glow">لو في يوم الدنيا بقت تقيلة عليكي..</h2>
+          <p class="desc-lead">اختاري دلوقتي الحاجة اللي قلبك حاسس إنه محتاجها أكتر حاجة:</p>
+        </div>
+
+        <div class="mood-selectors-grid reveal-item">
+          <button class="mood-btn" data-mood="joy">
+            <span class="mood-icon">❤️</span>
+            <span class="mood-title">عايزة أفرح</span>
+            <span class="mood-desc">جرعة ضحك وسعادة تفتح النفس</span>
+          </button>
+          <button class="mood-btn" data-mood="calm">
+            <span class="mood-icon">🌙</span>
+            <span class="mood-title">عايزة أهدى</span>
+            <span class="mood-desc">روقان وراحة بال وبلاش قلق</span>
+          </button>
+          <button class="mood-btn" data-mood="comfort">
+            <span class="mood-icon">🫂</span>
+            <span class="mood-title">عايزة حد يطمني</span>
+            <span class="mood-desc">طبطبة لأشطر وأغلى كتكوته</span>
+          </button>
+          <button class="mood-btn" data-mood="hope">
+            <span class="mood-icon">✨</span>
+            <span class="mood-title">عايزة أفتكر إن اللي جاي أحسن</span>
+            <span class="mood-desc">العوض دايماً على قد الصبر وزيادة</span>
+          </button>
+        </div>
+
+        <div class="mood-response-box" id="moodResponseBox">
+          <div class="response-card" id="responseCard">
+            <div class="card-quote-mark">“</div>
+            <p class="response-text" id="responseText">
+              اضغطي على أي زرار من الـ 4 فوق عشان تفتحي رسالة تطبطب على قلبك.. 🌸
+            </p>
+            <div class="response-footer">
+              <span class="keep-note">📌 احتفظي بالرسالة دي في قلبك.. يمكن تحتاجيها في يوم مش النهارده.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-messages-showcase reveal-item">
+          <h3 class="sub-showcase-title">بطاقات دعم عشانك يا شني 💌</h3>
+          <div class="mini-cards-grid" id="miniCardsGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         09 — وفي حاجة أنا متأكد منها (الإيمان اللي مش هيتزعزع)
+         =================================================================== -->
+    <section class="section sec-ecg" id="secEcg">
+      <div class="sec-container text-center">
+        <span class="sub-label reveal-item">09 // الإيمان اللي مش هيتزحزح</span>
+        <h2 class="title-glow reveal-item">وفي حاجة واحدة أنا متأكد منها</h2>
+
+        <div class="ecg-monitor-frame reveal-item">
+          <div class="ecg-grid-bg"></div>
+          <svg viewBox="0 0 800 160" class="ecg-svg" preserveAspectRatio="none">
+            <path class="ecg-path-bg" d="M0,80 L200,80 L220,50 L235,115 L250,20 L270,140 L285,80 L450,80 L470,50 L485,115 L500,20 L520,140 L535,80 L800,80" />
+            <path class="ecg-path-pulse" id="ecgPulse" d="M0,80 L200,80 L220,50 L235,115 L250,20 L270,140 L285,80 L450,80 L470,50 L485,115 L500,20 L520,140 L535,80 L800,80" />
+          </svg>
+          <div class="ecg-live-badge">
+            <span class="live-dot"></span>
+            <span>NURSE JANNA — LOADING FUTURE 🩺✨</span>
+          </div>
+        </div>
+
+        <div class="ecg-manifesto reveal-item">
+          <p class="ecg-line">لسه بدري يا جنا..</p>
+          <p class="ecg-line">لسه قدامك ثانوي، ولسه قدامك كلية، ولسه الطريق طويل..</p>
+          <p class="ecg-line">لسه هتتعبي في أيام، وهتزهقي، وهتشكّي في نفسك لما الضغط يزيد، وهتحسّي إنك مش قادرة تكمّلي..</p>
+          <p class="ecg-line ecg-strong">بس إياكي يوم صعب يقنعك إنك مش شاطرة، أو إنك مش قد اللي قدامك.</p>
+          <h3 class="ecg-climax">لأن أنا شايفك بجد.. شايف قد إيه إنتي قوية حتى وأنتِ مش واخدة بالك، وقد إيه بتقدري تكمّلي حتى لما الدنيا تبقى تقيلة.</h3>
+          <p class="ecg-line ecg-subtext">أنا عارف إنك هتبقي قدها.. وأكتر. وعارف إن اللي جاية هتكون أحلى، وإنك هتوصلي لمكان يليق بيكي. متنسيش إن في حد واقف وراكي، وشايفك، ومصدق فيكي حتى في الأيام اللي إنتي مش مصدقة في نفسك فيها.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         10 — الـ WOW الحقيقي + الرسالة الرئيسية الطويلة
+         =================================================================== -->
+    <section class="section sec-grand-climax" id="secClimax">
+      <div class="sec-container text-center">
+        
+        <div class="wow-pre-trigger reveal-item" id="wowTriggerBox">
+          <span class="sub-label">10 // اللحظة الأكبر في الموقع كله</span>
+          <h2 class="title-glow">بس لسه في حاجة واحدة ما قولتهالكش..</h2>
+          <p class="desc-lead">جاهزة تقري الكلام اللي طالع من قلب أخوكي من غير فلاتر ولا مجاملات؟</p>
+
+          <button class="btn-wow-open" id="wowOpenBtn">
+            <span class="btn-glow-pulse"></span>
+            <span class="btn-wow-text">افتحي الرسالة الكبيرة 💌</span>
+          </button>
+        </div>
+
+        <div class="wow-explosion-stage" id="wowStage">
+          <div class="split-backdrop">
+            <div class="split-side split-left"></div>
+            <div class="split-side split-right"></div>
+          </div>
+          <div class="word-vortex" id="wordVortex"></div>
+          <div class="core-trinity" id="coreTrinity">
+            <span class="trinity-word word-1">«أختي.»</span>
+            <span class="trinity-word word-2">«حبيبتي.»</span>
+            <span class="trinity-word word-3">«جنّا.»</span>
+          </div>
+        </div>
+
+        <div class="grand-letter-wrapper" id="grandLetterWrapper">
+          <div class="letter-parchment">
+            <div class="letter-header">
+              <span class="letter-stamp">من أخوكي لسرنجة قلبه وكتكوته روحه 🐣❤️🩺</span>
+              <span class="letter-date">10 / 10 / 2026 • 16 سنة</span>
+            </div>
+
+            <div class="letter-body" id="letterBody">
+              <p class="msg-para intro-rant">
+                اععع ميتينك مبعرفش اكتب كلام حلو زي بتوع الفيس والحاجات دي بس اهو لاجل عيونك هحاول بس يكش يتمر فامك فااااا فالبداية كدا..
+              </p>
+              <div class="msg-divider"><span>🌸 🐣 🌸</span></div>
+              <p class="msg-para highlight-p">
+                بصي يا أشطر كتكوته.. مش معنى إنك عانيتي لفترة طويلة يبقى ربنا ناسيكي وإن حظك هيفضل قليل من الدنيا.. لاء خالص دا العوض دايمًا بيبقى على قد الصبر وزيااادة!
+              </p>
+              <p class="msg-para">
+                أنا عارف إني مقصر كتير معاكي وبحاول والله على قد ما أقدر أعوضك وأتمنى أكون فرّحتك ولو مرة.. وعارف إنك مش بتعرفي تعبري والحاجات دي (مهو أنا لو كان اسمي بيبدأ بحرف الـ "روفيدة" كان زمانك حكيالي كل حاجة بس أهو قدر ربنا 😂).. بس بجد أنا آسفلك على كل حاجة وحشة مريتي بيها، وأنا مهما عملتي ومهما حصل فخور بيكي وهفضل جنبك.
+              </p>
+              <p class="msg-para">
+                عايز أطبطب على قلبك وأطمنك.. أنا جاي أفكرك إنك مهما كنتي تعبانة، قلقانة، خايفة، حزينة.. فكل ده فاكس! إنتي عندي أحلى حاجة في الدنيا، إنتي زي قمر عيني مهما حصل ومهما الدنيا قفلت في وشك افتكري إن في حد واقف وراكي، جاهز يسمعك، وجاهز يقف جنبك من غير ما تطلبي.
+              </p>
+              <p class="msg-para">
+                كل سنة وأنتِ بخير يا أغلى وأحن قلب في حياتي.. مش عارف أبدأ منين ولا عارف الكلام هيقدر يوصف قد إيه وجودك غالي عليا. أنتِ مش مجرد أخت.. أنتِ العيلة كلها اللي بقيت لي، وأنتِ السند، والضحكة، والراحة، والبيت.
+              </p>
+              <p class="msg-para">
+                كل سنة بتعدي بتأكدلي أكتر إنك نعمة كبيرة أوي.. وجودك بيعوضني عن حاجات كتير، وبيخليني أحس إن مهما الدنيا ضاقت، لسه في حاجة ثابتة وجميلة اسمها شني. أه مكناش أحسن حاجة زمان بس بجد اكتشفت قد إيه كنت غبي وقد إيه كنت مضيع وقت بعيد عنك.. فبجد أنا مبسوط إننا قربنا للدرجة اللي تخليكي تمسحي بيا الأرض وأنا ببتسملك يحقيرة 😂❤️
+              </p>
+              <p class="msg-para highlight-p">
+                عايزك النهارده وبكرا وكل وقت تفتكري إن في حد بيحبك حب نظيف وكبير، حب مش مرتبط بمصلحة ولا كلام فاضي.. حب مش مشروط! حبيتك وبحبك وهحبك وهفضل جنبك مهما حصل.. حب أخ لأخته، حب مليان تقدير وامتنان وحرص عليكي وكل حاجة حلوة شبهك.
+              </p>
+              <p class="msg-para">
+                أنا فخور بيكي.. فخور بقوتك، وبصبرك، وبقلبك الحنين، وبإنك رغم كل حاجة لسه طيبة وبتحبي الخير (أشك بس أهو عشان المسدج متبوظش 😂).. كل سنة وأنتِ أسعد وأقوى وأريح بالاً، ومحاطة بالناس اللي تستاهلك (قصدي عليا أنا بس هاااه!).
+              </p>
+              <p class="msg-para">
+                كل سنة وأنا جنبك.. مش بس في الأفراح، في كل حاجة هفضل جنبك بس متزقينيش! بحبك فشخ يا أجمل وأغلى أخت.. ربنا يديكي كل اللي نفسك فيه ويكتبلك سنة جديدة مليانة راحة وفرحة وسكينة (ريا وسكينة ههه سوري أسف خلاص 😂).
+              </p>
+              <p class="msg-para">
+                وتكبري وتبقي أحلى وأشطر نيرس في الدنيا.. هتبقي ممرضة قد الدنيا مع إنك قصيرة بس هتبقي قد الدنيا! وأخيراً المرة دي هعرف أقولك بحبك من غير ما تضربيني ولا تقوليلي "تمام".
+              </p>
+              <p class="msg-para finale-line">
+                مش لاقي كلام أكتر من كلمة بحبك توصف اللي جوايا ليكي يا شني.. كل سنة وإنتي سر فرحتي وسرنجة قلبي 🩺❤️
+              </p>
+            </div>
+
+            <div class="letter-footer">
+              <span class="signature">— أخوكي اللي بيحبك وبيفتخر بيكي دايماً (سرنجة قلبي 🩺)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         11 — النهاية (THE CINEMATIC EPILOGUE)
+         =================================================================== -->
+    <section class="section sec-epilogue" id="secEpilogue">
+      <div class="sec-container text-center">
+        <div class="epilogue-blackout reveal-item" id="epilogueBox">
+          <p class="ep-line" id="epLine1">خلصنا؟</p>
+          <p class="ep-line ep-sub" id="epLine2">لأ..</p>
+          <h2 class="ep-climax-name" id="epLine3">كل سنة وإنتي بنتي وأختي وحبيبتي يا جنّا.</h2>
+
+          <div class="future-counter-box" id="futureCounterBox">
+            <span class="future-label">تميتي 16 سنة.. والسنين لسه بتعد لقدام:</span>
+            <div class="future-years" id="futureYearVal">16</div>
+            <span class="future-sub">16 ➔ 17 ➔ 20 ➔ 25 ➔ وإلى الأبد ♾️</span>
+          </div>
+
+          <div class="trio-silhouette-wrapper" id="trioVisual">
+            <div class="trio-glow-ring"></div>
+            <div class="trio-item item-ladybug">
+              <span class="t-emoji">🐞</span>
+              <span class="t-caption">براءة الدعسوقة</span>
+            </div>
+            <div class="trio-item item-nurse">
+              <span class="t-emoji">🩺</span>
+              <span class="t-caption">سرنجة قلبي ونيرس العيلة</span>
+            </div>
+            <div class="trio-item item-shelbie">
+              <span class="t-emoji">🐈‍⬛</span>
+              <span class="t-caption">شلبي الملكة البيضاء</span>
+            </div>
+            <div class="trio-item item-pubg">
+              <span class="t-emoji">🎮</span>
+              <span class="t-caption">وحش ببجي</span>
+            </div>
+            <div class="trio-item item-rose">
+              <span class="t-emoji">🌸</span>
+              <span class="t-caption">عشق الورد</span>
+            </div>
+          </div>
+
+          <p class="ep-grand-quote">
+            "لسه الحكاية طويلة.. والضحكة دي هتعيش سنين.<br>
+            <strong class="hbd-eng">Happy 16th Birthday, Janna</strong><br>
+            <span class="love-final">أنا بحبك أكتر بكتير مما بعرف أقوله باللسان.</span>"
+          </p>
+
+          <div class="final-sign">
+            <span>— أخوكي</span>
+          </div>
+
+          <div class="replay-action">
+            <button class="btn-replay" id="replayBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+              <span>ارجعي عيشي الحكاية من الأول لو عايزة</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
